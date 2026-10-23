@@ -10,7 +10,7 @@ reporting lost items, and borrowing/renting items from other students.
 
 **Objectives**
 -
-Allow students to:
+### Allow students to:
 
   - connect through posts/study groups
   
