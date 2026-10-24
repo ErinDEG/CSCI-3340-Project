@@ -9,18 +9,13 @@ reporting lost items, and borrowing/renting items from other students.
 
 
 **Objectives**
--
-### Allow students to:
 
-  - connect through posts/study groups
-  
-  - find previously lost items through listings
-  
-  - borrow/rent items from other students for a set amount of time.
+- Help students connect through posts, comments, and study groups.
+- Make it easier to find study partners by subject or course or general groups.
+- Provide a space for students to organize and discover campus events.
+- Help students recover lost items through searchable listings.
+- Support borrowing and renting items for an agreed period.
 
-
-Planned Features
--
 
 ### Post creations
 
@@ -30,8 +25,30 @@ Planned Features
 
 ### Study Groups
 
+Allow students to-
+
   - Create study groups organized by subject/course
   - Browse available groups
   - Join/leave groups
   - Group management
-  - Notifications on new planned groups depending on subject or course.
+  - Notifications on planned groups depending on subject or course.
+
+## Agile Planning
+
+Our group plans to work on the app in sprints instead of building everything at once. Each sprint will last about a week and will be at the start of the week. We will choose what to work on and split the tasks between our group members.
+
+At the end of each week we will go over what we finished, any problems found, and what needs work. We will also use this to prepare for our class updates and this plan might change as we learn more about Django and see how long each feature takes to build.
+
+Our priorities for now are:
+
+- Planning the pages and how students will use the app.
+- Creating the home page.
+- Adding accounts, login, and student profiles.
+- Adding study groups that students can create and join.
+
+After the basic features work, we will add features like comments, campus events, lost and found listings, and borrowing or renting items. 
+
+### Sprint Plan
+
+Sprint 1 : Agree on the main requirements, write our user stories, and sketch the home page and account pages. Then start with diagrams to help us plan how the app will work.
+
