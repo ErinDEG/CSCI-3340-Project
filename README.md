@@ -49,7 +49,9 @@ Students and Organizations can post their upcoming events, with its location, ti
 
 ### Renting/Borrowing Items
 
-Students can list items for others to borrow during their semester. These items can be listed as books, calculators, etc. Students who list their items have the option for it to be free or set at a pay rate. Transactions are not done through the website, and must be ONLY in-person. When a listing is currently borrowed/rented, the listing is hidden for viewing. This ensures that all listings are available, and not flooded with other listings that are currently in-use.
+Students can list items for others to borrow during their semester. These items can be listed as books, calculators, etc. Students who list their items have the option for it to be free or set at a pay rate.
+Transactions are not done through the website, and must be ONLY in-person. When a listing is currently borrowed/rented, the listing is hidden for viewing.
+This ensures that all listings are available, and not flooded with other listings that are currently in-use.
 
 ## Agile Planning
 
