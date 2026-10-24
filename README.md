@@ -33,6 +33,24 @@ Allow students to-
   - Group management
   - Notifications on planned groups depending on subject or course.
 
+### Lost/Found Reports
+
+If an item is missing
+
+  - A student can report where they might've lost it and when it was realized to be missing.
+
+When the item is found, with or without a previous post
+  
+  - The student can either send an image of where it was found, and or respond with the location/building/organization it was given to for pickup.
+
+### Campus Events
+
+Students and Organizations can post their upcoming events, with its location, time, and description as long as it's within the campus area.
+
+### Renting/Borrowing Items
+
+Students can list items for others to borrow during their semester. These items can be listed as books, calculators, etc. Students who list their items have the option for it to be free or set at a pay rate. Transactions are not done through the website, and must be ONLY in-person. When a listing is currently borrowed/rented, the listing is hidden for viewing. This ensures that all listings are available, and not flooded with other listings that are currently in-use.
+
 ## Agile Planning
 
 Our group plans to work on the app in sprints instead of building everything at once. Each sprint will last about a week and will be at the start of the week. We will choose what to work on and split the tasks between our group members.
