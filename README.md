@@ -1,5 +1,6 @@
 **Campus Hub**
 =
+Status: boilerplate
 
 
 **Description**
