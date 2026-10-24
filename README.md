@@ -26,7 +26,7 @@ reporting lost items, and borrowing/renting items from other students.
 
 ### Study Groups
 
-Allow students to-
+Allow students to:
 
   - Create study groups organized by subject/course
   - Browse available groups
