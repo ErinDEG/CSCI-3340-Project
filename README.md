@@ -1,6 +1,8 @@
 **Campus Hub**
 =
-Status: boilerplate
+Status: Placeholder Homepage
+
+User Authentication → feature/registration branch
 
 
 **Description**
