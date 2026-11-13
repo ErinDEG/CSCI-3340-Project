@@ -1,0 +1,31 @@
+{% extends 'events/index.html' %}
+<!-- Make your own events for people to see right here! -->
+
+{% block content %}
+
+<h1>Add a New Event</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label class="form-label">Event Name:</label>
+    <input class="form-control" type="text"
+           name="title" required>
+
+    <label class="form-label mt-3">Event Date:</label>
+    <input class="form-control" type="date"
+           name="date" required>
+
+    <label class="form-label mt-3">Location:</label>
+    <input class="form-control" type="text"
+            name="location" required>
+    
+    <label class="form-label" mt-3>Description:</label>
+    <input class="form-control" type="text"
+            name="description" required>
+
+    <button class="btn btn-primary mt-3"
+            type="submit">Save Event</button>
+</form>
+
+{% endblock %}

@@ -8,3 +8,9 @@ def home(request):
 
 def register(request):
     pass
+
+def events(request):
+    return render(request, "events/index.html")
+
+# def lostfound(request):
+#     return render(request, lost_found/"index.html")
