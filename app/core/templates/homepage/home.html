@@ -1,12 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Campus Hub</title>
+    <title>Campus Hub | Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
     <h1>Welcome to Campus Hub!</h1>
     <p>This is currently a placeholder homepage, more coming soon!</p>
+
+    <!-- User Auth -->
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}!</p>
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
 
 </body>
 </html>
