@@ -1,31 +1,37 @@
-<!-- This will be where all the events are happening -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block content %}
-    
-    <title>Events</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script></head>
+    <title>{% block title %}Campus events | Campus Hub{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles_list.css' %}">
+    {% block event_styles %}{% endblock %}
+</head>
 <body>
+    <nav aria-label="Campus events navigation">
+        <a href="{% url 'home' %}">Campus Hub home</a>
+        {% block event_navigation %}{% endblock %}
+    </nav>
 
-    <link href="{% static 'css/styles_list.css' %}" rel="stylesheet">
+    <main>
+        {% block content %}
+            <h1>Campus events</h1>
+            <p><a class="btn btn-primary" href="{% url 'add_event' %}">Add an event</a></p>
 
-        <h1>TEST FOR EVENTS</h1>
-        <!-- Button that takes the user to add_event.html -->
-        <a href="{% url 'add_event' %}" class="btn btn-primary mb-3">Add an Event</a>
-        <ul>
-            {% for event in events %}
-                <li>{{ event.name }}, {{ event.desc }}, Submitted by: {{ event.submitted_by }} at {{ event.location }}</li>
-            {% empty %}
-                <li>No events yet.</li>
-            {% endfor %}
-        </ul>
-    {% endblock %}
-
+            <ul class="event-list">
+                {% for event in events %}
+                    <li>
+                        <h2>{{ event.name }}</h2>
+                        {% if event.desc %}<p>{{ event.desc }}</p>{% endif %}
+                        <p>{{ event.location }}</p>
+                        <p>Submitted by {{ event.submitted_by|default:"Unknown user" }}</p>
+                    </li>
+                {% empty %}
+                    <li>No events yet.</li>
+                {% endfor %}
+            </ul>
+        {% endblock %}
+    </main>
 </body>
 </html>
-

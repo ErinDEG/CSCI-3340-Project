@@ -1,8 +1,15 @@
 from django import forms
+
 from .models import Event
 
+
 class EventForm(forms.ModelForm):
-    # Meta will transform the data into Metadata
     class Meta:
         model = Event
-        fields = ["name", "desc", "location", "submitted_by"]
+        fields = ["name", "location", "desc"]
+        labels = {"name": "Event Name", "desc": "Description"}
+        widgets = {
+            "name": forms.TextInput(attrs={"class": "form-control"}),
+            "location": forms.TextInput(attrs={"class": "form-control"}),
+            "desc": forms.TextInput(attrs={"class": "form-control", "required": True}),
+        }

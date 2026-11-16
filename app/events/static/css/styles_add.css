@@ -7,8 +7,8 @@ body {
 /* Centers the form container and gives it a card-like appearance */
 .form-container {
     max-width: 550px;
-    margin: 60px auto; /* Centers horizontally and adds vertical spacing */
-    padding: 40px;
+    margin: 1.5rem auto 3rem;
+    padding: clamp(1rem, 5vw, 2.5rem);
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -30,6 +30,12 @@ body {
 }
 
 /* Form styling improvements */
+.form-field {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
 .form-label {
     font-weight: 500;
     color: #495057;
@@ -39,11 +45,16 @@ body {
     border-radius: 8px;
     padding: 10px 15px;
     border: 1px solid #ced4da;
+    font: inherit;
 }
 
 .form-control:focus {
     border-color: #0d6efd;
     box-shadow: rgba(13, 110, 253, 0.15);
+}
+
+.form-container .errorlist {
+    color: #a32338;
 }
 
 .btn-primary {

@@ -3,6 +3,41 @@
 body {
     background-color: #f4f6f9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+body > nav,
+body > main {
+    width: min(80rem, calc(100% - 2rem));
+    margin-inline: auto;
+}
+
+body > nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-block: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 0.65rem 1rem;
+    background-color: #214ca0;
+    color: white;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #173674;
+}
+
+:focus-visible {
+    outline: 2px solid #214ca0;
+    outline-offset: 3px;
 }
 
 /* Center the main heading and button wrapper */
@@ -13,7 +48,7 @@ h1 {
 }
 
 /* Transform the ul into a responsive 4-column grid */
-ul {
+.event-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Exactly 4 columns */
     gap: 20px; /* Space between event cards */
@@ -24,7 +59,7 @@ ul {
 }
 
 /* Style each event list item as a card */
-ul li {
+.event-list > li {
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
@@ -34,10 +69,20 @@ ul li {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-wrap: anywhere;
+}
+
+.event-list h2,
+.event-list p {
+    margin: 0 0 0.35rem;
+}
+
+.event-list h2 {
+    font-size: 1.15rem;
 }
 
 /* Hover effect: lifts the card up and deepens the shadow */
-ul li:hover {
+.event-list > li:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
     border-color: #0d6efd;
@@ -45,13 +90,13 @@ ul li:hover {
 
 /* Responsive fallback: switches to 2 columns on tablets, 1 column on mobile */
 @media (max-width: 1024px) {
-    ul {
+    .event-list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
-    ul {
+    .event-list {
         grid-template-columns: 1fr;
     }
 }

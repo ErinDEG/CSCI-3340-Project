@@ -19,7 +19,7 @@ def add_events(request):
     else:
         form = EventForm()
 
-    return render(request, 'add_event.html')
+    return render(request, 'add_event.html', {'form': form})
 
 @login_required
 def list_events(request):

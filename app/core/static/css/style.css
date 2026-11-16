@@ -1,42 +1,241 @@
-
-/* Dark mode colors */
 :root {
     color-scheme: dark;
-    --background: #121212;
-    --surface: #1e1e1e;
-    --text: #f5f5f5;
-    --accent: #818cf8;
+    --background: #121622;
+    --surface: #1b2233;
+    --border: #3a455f;
+    --text: #f5f6ff;
+    --muted: #c4ccdf;
+    --accent: #adb8ff;
+    --accent-hover: #c7ceff;
+    --danger: #ffb5bc;
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.55;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--background);
-    color: var(--text);
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 30px;
+    background: var(--background);
+    color: var(--text);
 }
 
 a {
     color: var(--accent);
 }
 
-input {
-    background-color: var(--surface);
-    color: var(--text);
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 8px;
+.shell {
+    width: min(65rem, calc(100% - 2rem));
+    margin-inline: auto;
 }
 
-button {
-    background-color: var(--accent);
-    color: #111;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 16px;
+.site-header {
+    border-bottom: 1px solid var(--border);
+}
+
+.navigation,
+.nav-actions,
+.hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.navigation {
+    min-height: 4rem;
+    justify-content: space-between;
+}
+
+.navigation a {
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.brand {
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 760;
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.55rem;
+    background: var(--accent);
+    color: #161829;
+    font: inherit;
+    font-weight: 660;
+    text-decoration: none;
     cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.85;
+.button:hover {
+    background: var(--accent-hover);
+}
+
+.button-secondary {
+    border-color: var(--border);
+    background: transparent;
+    color: var(--text);
+}
+
+.button-secondary:hover {
+    background: var(--surface);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent-hover);
+    outline-offset: 3px;
+}
+
+.hero {
+    margin-block: clamp(1.5rem, 5vw, 3.5rem) 2rem;
+    padding: clamp(1.4rem, 5vw, 3.75rem);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: linear-gradient(120deg, #232e50, var(--surface) 80%);
+}
+
+h1,
+h2,
+h3,
+p,
+dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+h1 {
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+}
+
+.hero h1 {
+    max-width: 18ch;
+    font-size: clamp(2rem, 6vw, 3.75rem);
+}
+
+.hero p {
+    max-width: 52ch;
+    margin-block: 0.85rem 1.35rem;
+    color: var(--muted);
+}
+
+.upcoming {
+    padding-bottom: 2.5rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 0.85rem;
+    margin-top: 0.75rem;
+}
+
+.feature-grid article,
+.account-panel {
+    border: 1px solid var(--border);
+    border-radius: 0.85rem;
+    background: var(--surface);
+}
+
+.feature-grid article {
+    padding: 1rem;
+}
+
+.feature-grid p {
+    margin-top: 0.35rem;
+    color: var(--muted);
+}
+
+.account-panel {
+    display: grid;
+    gap: 1.1rem;
+    width: min(100%, 32rem);
+    margin: clamp(1.5rem, 6vw, 3.5rem) auto;
+    padding: clamp(1.25rem, 5vw, 2rem);
+}
+
+.account-panel dl {
+    margin: 0;
+}
+
+.account-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.account-form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.account-form label,
+.account-panel dt {
+    font-weight: 650;
+}
+
+.account-form input:not([type="hidden"]) {
+    order: 1;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #69748b;
+    border-radius: 0.5rem;
+    background: var(--background);
+    color: var(--text);
+    font: inherit;
+}
+
+.account-form input[aria-invalid="true"] {
+    border-color: var(--danger);
+}
+
+.account-form .helptext {
+    order: 3;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.account-form .errorlist {
+    order: 2;
+    color: var(--danger);
+}
+
+.account-form ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.status {
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #6cac93;
+    border-radius: 0.5rem;
+    background: #19352d;
+    color: #c5f0dd;
+}
+
+@media (max-width: 36rem) {
+    .navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding-block: 0.75rem;
+    }
+
+    .nav-actions {
+        gap: 0.65rem;
+        font-size: 0.9rem;
+    }
 }
