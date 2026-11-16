@@ -3,6 +3,7 @@
 Status: Placeholder Homepage
 
 User Authentication → feature/registration branch (Merged into Main)
+
 Events -> feature/events branch (registration merged into this branch)
 
 
