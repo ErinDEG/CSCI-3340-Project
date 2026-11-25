@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Campus events | Campus Hub{% endblock %}
+
+{% block content %}
+<section class="feature-page" aria-labelledby="calendar-title">
+    <header class="feature-header">
+        <div>
+            <h1 id="calendar-title">Campus events</h1>
+            <p>Explore the calendar or follow the categories you want to keep up with.</p>
+        </div>
+        <div class="feature-actions">
+            <a class="button button-secondary" href="{% url 'event_subscriptions' %}">My subscriptions</a>
+            <a class="button" href="{% url 'add_event' %}">Add an event</a>
+        </div>
+    </header>
+    {% include "includes/messages.html" %}
+
+    <section class="calendar-panel" aria-labelledby="month-title">
+        <div class="calendar-toolbar">
+            <h2 id="month-title">{{ month_start|date:"F Y" }}</h2>
+            <nav class="feature-actions" aria-label="Calendar months">
+                {% if previous_month %}
+                    <a class="button button-secondary" href="{% querystring month=previous_month|date:'Y-m' %}" aria-label="Previous month, {{ previous_month|date:'F Y' }}">←</a>
+                {% endif %}
+                <a class="button button-secondary" href="{% querystring month=today|date:'Y-m' %}">Today</a>
+                {% if next_month %}
+                    <a class="button button-secondary" href="{% querystring month=next_month|date:'Y-m' %}" aria-label="Next month, {{ next_month|date:'F Y' }}">→</a>
+                {% endif %}
+            </nav>
+            <form class="calendar-filter" method="get">
+                <input type="hidden" name="month" value="{{ month_start|date:'Y-m' }}">
+                <label for="category-filter">Category</label>
+                <select name="category" id="category-filter">
+                    <option value="">All categories</option>
+                    {% for value, label in categories %}
+                        <option value="{{ value }}"{% if category == value %} selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+                <button class="button button-secondary" type="submit">Filter</button>
+            </form>
+        </div>
+
+        <table class="calendar" aria-labelledby="month-title">
+            <thead>
+                <tr>
+                    <th scope="col" abbr="Monday">Mon</th>
+                    <th scope="col" abbr="Tuesday">Tue</th>
+                    <th scope="col" abbr="Wednesday">Wed</th>
+                    <th scope="col" abbr="Thursday">Thu</th>
+                    <th scope="col" abbr="Friday">Fri</th>
+                    <th scope="col" abbr="Saturday">Sat</th>
+                    <th scope="col" abbr="Sunday">Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for week in weeks %}
+                    <tr>
+                        {% for day in week %}
+                            <td{% if not day.in_month %} class="outside-month"{% endif %}>
+                                {% if day.events %}
+                                    <a class="calendar-date has-events" href="#day-{{ day.date|date:'Y-m-d' }}" aria-label="{{ day.date|date:'F j' }}, {{ day.events|length }} event{{ day.events|length|pluralize }}"{% if day.date == today %} aria-current="date"{% endif %}>
+                                        {{ day.date.day }}
+                                    </a>
+                                    <div class="calendar-preview" aria-hidden="true">
+                                        <span>{{ day.events.0.name }}</span>
+                                        {% if day.events|length > 1 %}
+                                            <small>+{{ day.events|length|add:"-1" }} more</small>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <time class="calendar-date" datetime="{{ day.date|date:'Y-m-d' }}"{% if day.date == today %} aria-current="date"{% endif %}>{{ day.date.day }}</time>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section class="agenda" aria-labelledby="agenda-title">
+        <h2 id="agenda-title">{{ month_start|date:"F" }} agenda</h2>
+        {% for day, day_events in agenda %}
+            <section class="agenda-day" id="day-{{ day|date:'Y-m-d' }}" tabindex="-1" aria-label="{{ day|date:'l, F j' }}">
+                <h3>{{ day|date:"l, F j" }}</h3>
+                <div class="event-grid">
+                    {% for event in day_events %}
+                        {% include "events/event_card.html" with heading_level=4 %}
+                    {% endfor %}
+                </div>
+            </section>
+        {% empty %}
+            <p class="empty-state">No events match this month and category.</p>
+        {% endfor %}
+        {% if unscheduled %}
+            <details class="calendar-panel unscheduled">
+                <summary>Events without a date ({{ unscheduled|length }})</summary>
+                <div class="event-grid">
+                    {% for event in unscheduled %}
+                        {% include "events/event_card.html" %}
+                    {% endfor %}
+                </div>
+            </details>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}

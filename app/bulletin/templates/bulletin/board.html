@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Bulletin board | Campus Hub{% endblock %}
+
+{% block content %}
+<section class="feature-page board" aria-labelledby="board-title">
+    <header class="feature-header">
+        <div>
+            <h1 id="board-title">Bulletin board</h1>
+            <p>Read the latest announcements from the campus community.</p>
+        </div>
+        {% if user.is_authenticated %}
+            <a class="button" href="{% url 'bulletin:post' %}">Post announcement</a>
+        {% else %}
+            {% url 'bulletin:post' as post_url %}
+            <a class="button" href="{% url 'login' %}?next={{ post_url|urlencode }}">Log in to post</a>
+        {% endif %}
+    </header>
+    {% include "includes/messages.html" %}
+    <div class="bulletin-list">
+        {% for announcement in page_obj %}
+            <article class="feature-card announcement">
+                <h2>{{ announcement.title }}</h2>
+                <p class="feature-meta">
+                    {% if announcement.author %}{{ announcement.author.username }}{% else %}Former member{% endif %}
+                    · <time datetime="{{ announcement.created_at|date:'c' }}">{{ announcement.created_at|date:"M j, Y · g:i a" }}</time>
+                </p>
+                <p class="post-body">{{ announcement.body }}</p>
+                {% if user.is_authenticated and announcement.author_id == user.id %}
+                    <a class="edit-link" href="{% url 'bulletin:edit' announcement.pk %}" aria-label="Edit {{ announcement.title }}">Edit announcement</a>
+                {% endif %}
+            </article>
+        {% empty %}
+            <p class="empty-state">There are no announcements yet.</p>
+        {% endfor %}
+    </div>
+    {% include "includes/pagination.html" %}
+</section>
+{% endblock %}

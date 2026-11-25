@@ -1,9 +1,16 @@
 from django.urls import path
+
 from . import views
 
 
-urlpatterns= [
-    # Very crucial. Turning these into comments will not allow the urls to be joinable!
-    path('', views.list_events, name= 'event_list'),
-    path('add_event/', views.add_events, name='add_event'),
+urlpatterns = [
+    path("", views.list_events, name="event_list"),
+    path("add_event/", views.event_form, name="add_event"),
+    path("<int:pk>/edit/", views.event_form, name="edit_event"),
+    path("subscriptions/", views.subscriptions, name="event_subscriptions"),
+    path(
+        "subscriptions/<str:category>/",
+        views.update_subscription,
+        name="update_event_subscription",
+    ),
 ]

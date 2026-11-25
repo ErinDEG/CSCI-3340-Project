@@ -4,10 +4,11 @@
     <section class="hero" aria-labelledby="home-title">
         {% if user.is_authenticated %}
             <h1 id="home-title">Welcome, {{ user.first_name|default:user.username }}.</h1>
-            <p>Find out what’s happening on campus or post an event of your own.</p>
+            <p>Find campus events and catch up on student announcements.</p>
             <div class="hero-actions">
                 <a class="button" href="{% url 'event_list' %}">Browse events</a>
                 <a class="button button-secondary" href="{% url 'add_event' %}">Add an event</a>
+                <a class="button button-secondary" href="{% url 'bulletin:board' %}">Read announcements</a>
             </div>
         {% else %}
             <h1 id="home-title">Find your place on campus.</h1>
@@ -15,6 +16,7 @@
             <div class="hero-actions">
                 <a class="button" href="{% url 'register' %}">Create an account</a>
                 <a class="button button-secondary" href="{% url 'event_list' %}">Browse events</a>
+                <a class="button button-secondary" href="{% url 'bulletin:board' %}">Read announcements</a>
             </div>
         {% endif %}
     </section>

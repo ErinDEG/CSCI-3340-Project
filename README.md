@@ -1,10 +1,10 @@
 **Campus Hub**
 =
-## Preliminary delivery
+## Campus events and bulletin board
 
-The Django app is the interactive prototype. It includes a home page for guests and signed-in students, account registration, login, logout, profile editing, and an event list and creation form. [User stories and acceptance criteria](docs/user-stories.md)
+Campus Hub includes student accounts, a campus event calendar, and a public bulletin board. [User stories and acceptance criteria](docs/user-stories.md)
 
-### Run the prototype
+### Run locally
 
 From the repository root, create a virtual environment using Python 3.10 or newer.
 
@@ -20,12 +20,17 @@ python app/manage.py migrate
 python app/manage.py runserver
 ```
 
+Dates and times use the campus time zone. Set the `CAMPUS_TIME_ZONE` environment variable to change the default of `America/Chicago`.
+
 ### Demo walkthrough
 
-1. Open the [home page](http://127.0.0.1:8000/). Choose **Create an account** and sign up with a demo username and password.
-2. Open **My profile**, save a first and last name, and return home to see the updated greeting.
-3. Choose **Add an event**, enter a name, location, and description, and select **Save event**. Verify that the event list shows your username as the creator.
-4. Return home, log out, and choose **Browse events**. After you log back in, verify that Campus Hub takes you to the event list and that your saved profile is still available.
+1. Open the [home page](http://127.0.0.1:8000/) and create an account.
+2. Choose **Campus events**, then **Add an event**. Pick a category and a future start time. Enter a full venue name and address so **View map** can find the location in Google Maps.
+3. Find your event on the calendar and in the agenda below it. Try filtering the month by category. If an older event has no date, look under **Events without a date**. Its author can add a date and category.
+4. Open **My subscriptions** and follow your event’s category. Your event appears in the upcoming feed. Unfollow the category to remove its events from the feed.
+5. Open **Bulletin board** and post an announcement. Check that it appears at the top and that you can edit it. Log out and reopen the board to see what guests can read.
+
+Run the feature and account tests with `python app/manage.py test core events bulletin`.
 
 
 **Description**

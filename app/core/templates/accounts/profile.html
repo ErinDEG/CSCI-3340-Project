@@ -5,9 +5,7 @@
 {% block content %}
     <section class="account-panel" aria-labelledby="profile-title">
         <h1 id="profile-title">My profile</h1>
-        {% for message in messages %}
-            <p class="status" role="status">{{ message }}</p>
-        {% endfor %}
+        {% include "includes/messages.html" %}
         <dl>
             <dt>Username</dt>
             <dd>{{ user.username }}</dd>

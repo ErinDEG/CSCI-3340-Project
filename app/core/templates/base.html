@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Campus Hub{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/features.css' %}">
 </head>
 <body>
     <header class="site-header">
@@ -13,6 +14,7 @@
             <a class="brand" href="{% url 'home' %}">Campus Hub</a>
             <div class="nav-actions">
                 <a href="{% url 'event_list' %}">Campus events</a>
+                <a href="{% url 'bulletin:board' %}">Bulletin board</a>
                 {% if user.is_authenticated %}
                     <a href="{% url 'profile' %}">My profile</a>
                     <form action="{% url 'logout' %}" method="post">

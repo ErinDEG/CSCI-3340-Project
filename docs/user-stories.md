@@ -49,12 +49,33 @@ As a student on a shared computer, I want to log out so the next person cannot o
 * When I log out, I return to the guest home page.
 * If I open my profile or an event page, I am asked to log in again.
 
-## Story 6. Browse and post events
+## Story 6. Browse and post calendar events
 
 As a student, I want to browse and post events so I can see what is happening and share my own plans.
 
 **Acceptance criteria**
 
-* After logging in, I can see the event list and add an event with a name, location, and description.
-* The event appears in the list with my username as the creator.
+* After logging in, I can navigate the calendar by month and filter the agenda by category.
+* I can create an event with a name, start date and time, category, and location. I can also enter an end time and description.
+* The event appears on its start date with my username and a map link for the location.
+* I can edit events I created, including prototype events that have no date.
 * If there is a problem with what I entered, the form shows which field to fix and keeps what I typed.
+
+## Story 7. Follow event categories
+
+As a student, I want to follow the kinds of events I am interested in so I can see upcoming events in one place.
+
+**Acceptance criteria**
+
+* I can follow or unfollow Academic, Sports, Civil, and Clubs.
+* My subscriptions are saved to my account and the feed shows upcoming events in the categories I follow.
+
+## Story 8. Read and post announcements
+
+As a member of the campus community, I want one place to read and share announcements.
+
+**Acceptance criteria**
+
+* Guests and signed-in students can browse announcements with the newest first.
+* I can post a title and message after I sign in.
+* I can edit my own announcements. Other students cannot edit them.

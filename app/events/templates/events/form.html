@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{% if event %}Edit event{% else %}Add an event{% endif %} | Campus Hub{% endblock %}
+
+{% block content %}
+<section class="account-panel feature-form-panel" aria-labelledby="event-form-title">
+    <a class="back-link" href="{% url 'event_list' %}">← Back to calendar</a>
+    <h1 id="event-form-title">{% if event %}Edit event{% else %}Add an event{% endif %}</h1>
+    <form class="account-form content-form" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button class="button" type="submit">Save event</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}My event subscriptions | Campus Hub{% endblock %}
+
+{% block content %}
+<section class="feature-page" aria-labelledby="subscriptions-title">
+    <header class="feature-header">
+        <div>
+            <h1 id="subscriptions-title">My subscriptions</h1>
+            <p>Follow a category to see its upcoming events here.</p>
+        </div>
+        <a class="button button-secondary" href="{% url 'event_list' %}">Back to calendar</a>
+    </header>
+    {% include "includes/messages.html" %}
+    <div class="subscription-grid">
+        {% for value, label in categories %}
+            <form class="feature-card subscription-card" method="post" action="{% url 'update_event_subscription' value %}">
+                {% csrf_token %}
+                <h2>{{ label }}</h2>
+                {% if value in followed %}
+                    <button class="button button-secondary" type="submit" name="action" value="unfollow" aria-label="Unfollow {{ label }}">Unfollow</button>
+                {% else %}
+                    <button class="button" type="submit" name="action" value="follow" aria-label="Follow {{ label }}">Follow</button>
+                {% endif %}
+            </form>
+        {% endfor %}
+    </div>
+    <section class="agenda" aria-labelledby="followed-events-title">
+        <h2 id="followed-events-title">Upcoming from your categories</h2>
+        <div class="event-grid">
+            {% for event in page_obj %}
+                {% include "events/event_card.html" %}
+            {% empty %}
+                {% if followed %}
+                    <p class="empty-state">There are no upcoming events in the categories you follow.</p>
+                {% else %}
+                    <p class="empty-state">Follow a category to start building your feed.</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% include "includes/pagination.html" %}
+    </section>
+</section>
+{% endblock %}

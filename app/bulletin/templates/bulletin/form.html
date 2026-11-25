@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{% if announcement %}Edit announcement{% else %}Post announcement{% endif %} | Campus Hub{% endblock %}
+
+{% block content %}
+<section class="account-panel feature-form-panel" aria-labelledby="announcement-form-title">
+    <a class="back-link" href="{% url 'bulletin:board' %}">← Back to bulletin board</a>
+    <h1 id="announcement-form-title">{% if announcement %}Edit announcement{% else %}Post announcement{% endif %}</h1>
+    <form class="account-form content-form" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button class="button" type="submit">{% if announcement %}Save changes{% else %}Post announcement{% endif %}</button>
+    </form>
+</section>
+{% endblock %}

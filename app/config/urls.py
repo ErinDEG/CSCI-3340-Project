@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("core.urls")),
     path('events/', include("events.urls")),
+    path('bulletin/', include("bulletin.urls")),
     # path('lost-found/', include("lost_found.urls")),
 ]

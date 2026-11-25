@@ -1,0 +1,24 @@
+<article class="feature-card" id="event-{{ event.pk }}" tabindex="-1">
+    {% if event.category %}
+        <p class="category-label">{{ event.get_category_display }}</p>
+    {% endif %}
+    {% if heading_level == 4 %}
+        <h4>{{ event.name }}</h4>
+    {% else %}
+        <h3>{{ event.name }}</h3>
+    {% endif %}
+    {% if event.starts_at %}
+        <p class="feature-meta">
+            <time datetime="{{ event.starts_at|date:'c' }}">{{ event.starts_at|date:"D, M j, g:i a" }}</time>
+            {% if event.ends_at %}
+                – <time datetime="{{ event.ends_at|date:'c' }}">{{ event.ends_at|date:"D, M j, g:i a" }}</time>
+            {% endif %}
+        </p>
+    {% endif %}
+    <p>{{ event.location }} · <a href="{{ event.map_url }}" aria-label="View {{ event.location }} on Google Maps">View map</a></p>
+    {% if event.desc %}<p class="post-body">{{ event.desc }}</p>{% endif %}
+    {% if event.submitted_by %}<p class="feature-meta">Posted by {{ event.submitted_by.username }}</p>{% endif %}
+    {% if event.submitted_by_id == user.id %}
+        <a class="edit-link" href="{% url 'edit_event' event.pk %}" aria-label="Edit {{ event.name }}">{% if event.starts_at %}Edit event{% else %}Add date and category{% endif %}</a>
+    {% endif %}
+</article>
