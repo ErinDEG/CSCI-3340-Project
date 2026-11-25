@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}My profile | Campus Hub{% endblock %}
+
+{% block content %}
+    <section class="account-panel" aria-labelledby="profile-title">
+        <h1 id="profile-title">My profile</h1>
+        {% for message in messages %}
+            <p class="status" role="status">{{ message }}</p>
+        {% endfor %}
+        <dl>
+            <dt>Username</dt>
+            <dd>{{ user.username }}</dd>
+        </dl>
+        <form class="account-form" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button class="button" type="submit">Save profile</button>
+        </form>
+    </section>
+{% endblock %}

@@ -1,0 +1,66 @@
+/* AI Generated styles_add.css */
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Centers the form container and gives it a card-like appearance */
+.form-container {
+    max-width: 550px;
+    margin: 1.5rem auto 3rem;
+    padding: clamp(1rem, 5vw, 2.5rem);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.user-tag {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Form styling improvements */
+.form-field {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    font: inherit;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: rgba(13, 110, 253, 0.15);
+}
+
+.form-container .errorlist {
+    color: #a32338;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 15px;
+}

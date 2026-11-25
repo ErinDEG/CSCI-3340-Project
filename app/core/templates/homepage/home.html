@@ -1,28 +1,39 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Campus Hub | Home</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% extends "base.html" %}
 
-</head>
-<body>
-    <h1>Welcome to Campus Hub!</h1>
-    <p>This is currently a placeholder homepage, more coming soon!</p>
+{% block content %}
+    <section class="hero" aria-labelledby="home-title">
+        {% if user.is_authenticated %}
+            <h1 id="home-title">Welcome, {{ user.first_name|default:user.username }}.</h1>
+            <p>Find out what’s happening on campus or post an event of your own.</p>
+            <div class="hero-actions">
+                <a class="button" href="{% url 'event_list' %}">Browse events</a>
+                <a class="button button-secondary" href="{% url 'add_event' %}">Add an event</a>
+            </div>
+        {% else %}
+            <h1 id="home-title">Find your place on campus.</h1>
+            <p>Join Campus Hub to discover events, share what you’re organizing, and connect with other students.</p>
+            <div class="hero-actions">
+                <a class="button" href="{% url 'register' %}">Create an account</a>
+                <a class="button button-secondary" href="{% url 'event_list' %}">Browse events</a>
+            </div>
+        {% endif %}
+    </section>
 
-    <!-- User Auth -->
-    {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}!</p>
-
-        <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-
-</body>
-</html>
+    <section class="upcoming" aria-labelledby="upcoming-title">
+        <h2 id="upcoming-title">Coming next</h2>
+        <div class="feature-grid">
+            <article>
+                <h3>Study groups</h3>
+                <p>Find classmates by course and organize a study session.</p>
+            </article>
+            <article>
+                <h3>Lost and found</h3>
+                <p>Report a missing item or help another student find theirs.</p>
+            </article>
+            <article>
+                <h3>Borrowing and lending</h3>
+                <p>Share textbooks, calculators, and other supplies.</p>
+            </article>
+        </div>
+    </section>
+{% endblock %}

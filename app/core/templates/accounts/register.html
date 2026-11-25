@@ -1,22 +1,15 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> Campus Hub | Register</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% extends "base.html" %}
 
-</head>
-<body>
-    <h1>Create an Account</h1>
+{% block title %}Sign up | Campus Hub{% endblock %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit">Register</button>
-    </form>
-
-    <p>Already have an account? Login coming soon!</p>
-</body>
-</html>
+{% block content %}
+    <section class="account-panel" aria-labelledby="register-title">
+        <h1 id="register-title">Create an account</h1>
+        <form class="account-form" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button class="button" type="submit">Sign up</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </section>
+{% endblock %}

@@ -1,10 +1,31 @@
 **Campus Hub**
 =
-Status: Placeholder Homepage
+## Preliminary delivery
 
-User Authentication → feature/registration branch (Merged into Main)
+The Django app is the interactive prototype. It includes a home page for guests and signed-in students, account registration, login, logout, profile editing, and an event list and creation form. [User stories and acceptance criteria](docs/user-stories.md)
 
-Events -> feature/events branch (registration merged into this branch)
+### Run the prototype
+
+From the repository root, create a virtual environment using Python 3.10 or newer.
+
+```sh
+python -m venv .venv
+```
+
+Activate it with `source .venv/bin/activate` on macOS or Linux, or `\.venv\Scripts\Activate.ps1` in Windows PowerShell. Then install the requirements and start Django.
+
+```sh
+python -m pip install -r requirements.txt
+python app/manage.py migrate
+python app/manage.py runserver
+```
+
+### Demo walkthrough
+
+1. Open the [home page](http://127.0.0.1:8000/). Choose **Create an account** and sign up with a demo username and password.
+2. Open **My profile**, save a first and last name, and return home to see the updated greeting.
+3. Choose **Add an event**, enter a name, location, and description, and select **Save event**. Verify that the event list shows your username as the creator.
+4. Return home, log out, and choose **Browse events**. After you log back in, verify that Campus Hub takes you to the event list and that your saved profile is still available.
 
 
 **Description**

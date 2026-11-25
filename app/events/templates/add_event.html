@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}Add an event | Campus Hub{% endblock %}
+
+{% block event_styles %}
+    <link rel="stylesheet" href="{% static 'css/styles_add.css' %}">
+{% endblock %}
+
+{% block event_navigation %}
+    <a href="{% url 'event_list' %}">Campus events</a>
+{% endblock %}
+
+{% block content %}
+    <section class="form-container" aria-labelledby="event-title">
+        <h1 id="event-title">Add a new event</h1>
+        <p class="user-tag">Logged in as <strong>{{ request.user }}</strong></p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div class="form-field">
+                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+            <button class="btn btn-primary" type="submit">Save event</button>
+        </form>
+    </section>
+{% endblock %}
